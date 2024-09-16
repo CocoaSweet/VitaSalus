@@ -13,7 +13,7 @@ public class PacienteEntity {
 	private Long id;
 
 	@Column(name = "cpf")
-	private String CPF;
+	private String cpf;
 
 	@Column(name = "nome")
 	private String nome;
@@ -29,19 +29,24 @@ public class PacienteEntity {
 
 	@Column(name = "dt_nascimento")
 	private Date dataNascimento;
+	
+	@Column(name = "senha")
+	private String senha;
 
 	public PacienteEntity() {
 	}
 
-	public PacienteEntity(Long id, String cPF, String nome, String sobrenome, String email, String telefone,
-			Date dataNascimento) {
+	public PacienteEntity(Long id, String cpf, String nome, String sobrenome, String email, String telefone,
+			Date dataNascimento, String senha) {
+		super();
 		this.id = id;
-		CPF = cPF;
+		this.cpf = cpf;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.email = email;
 		this.telefone = telefone;
 		this.dataNascimento = dataNascimento;
+		this.senha = senha;
 	}
 
 	public Long getId() {
@@ -52,12 +57,12 @@ public class PacienteEntity {
 		this.id = id;
 	}
 
-	public String getCPF() {
-		return CPF;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getNome() {
@@ -98,6 +103,14 @@ public class PacienteEntity {
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }

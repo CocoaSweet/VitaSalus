@@ -13,7 +13,7 @@ public class MedicoEntity {
 	private Long id;
 
 	@Column(name = "cpf")
-	private String CPF;
+	private String cpf;
 	
 	@Column(name = "nome")
 	private String nome;
@@ -28,29 +28,34 @@ public class MedicoEntity {
 	private String telefone;
 	
 	@Column(name = "crm")
-	private String CRM;
+	private String crm;
 	
 	@Column(name = "ufcrm")
-	private String UFCRM;
+	private String ufcrm;
 	
 	@Column(name = "dt_nascimento")
 	private Date dataNascimento;
 	
+	@Column(name = "senha")
+	private String senha;
+	
+
 	public MedicoEntity() {
 	}
-	
-	public MedicoEntity(Long id, String cPF, String nome, String sobrenome, String email, String telefone, String cRM,
-			String uFCRM, Date dataNascimento) {
+
+	public MedicoEntity(Long id, String cpf, String nome, String sobrenome, String email, String telefone, String crm,
+			String ufcrm, Date dataNascimento, String senha) {
 		super();
 		this.id = id;
-		CPF = cPF;
+		this.cpf = cpf;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.email = email;
 		this.telefone = telefone;
-		CRM = cRM;
-		UFCRM = uFCRM;
+		this.crm = crm;
+		this.ufcrm = ufcrm;
 		this.dataNascimento = dataNascimento;
+		this.senha = senha;
 	}
 
 	public Long getId() {
@@ -59,14 +64,21 @@ public class MedicoEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getCPF() {
-		return CPF;
+	public String getCpf() {
+		return cpf;
 	}
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	public String getNome() {
 		return nome;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -83,17 +95,17 @@ public class MedicoEntity {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public String getCRM() {
-		return CRM;
+	public String getCrm() {
+		return crm;
 	}
-	public void setCRM(String cRM) {
-		CRM = cRM;
+	public void setCrm(String crm) {
+		this.crm = crm;
 	}
-	public String getUFCRM() {
-		return UFCRM;
+	public String getUfcrm() {
+		return ufcrm;
 	}
-	public void setUFCRM(String uFCRM) {
-		UFCRM = uFCRM;
+	public void setUfcrm(String ufcrm) {
+		this.ufcrm = ufcrm;
 	}
 	public Date getDataNascimento() {
 		return dataNascimento;
