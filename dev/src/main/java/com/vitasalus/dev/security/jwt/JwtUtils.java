@@ -49,4 +49,8 @@ public class JwtUtils {
 		}
 		return false;
 	}
+	
+	public String getCpfToken(String Token) {
+		return Jwts.parser().setSigningKey(getSigninKey()).build().parseClaimsJws(Token).getBody().getSubject();
+	}
 }

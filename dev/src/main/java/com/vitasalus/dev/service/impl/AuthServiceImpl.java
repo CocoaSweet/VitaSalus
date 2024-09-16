@@ -37,6 +37,7 @@ public class AuthServiceImpl implements AuthService {
 		} catch (BadCredentialsException e) {
 			// TODO
 		}
+		return null;
 	}
 
 }
