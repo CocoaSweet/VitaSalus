@@ -9,6 +9,7 @@ import com.vitasalus.dev.service.impl.UserDetailsImpl;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -24,9 +25,9 @@ public class JwtUtils {
 	private int jwtExpirationMs;
 	
 	public String generateTokenFromUserDetailsImpl(UserDetailsImpl userDetail) {
-		return Jwts.builder().claim("cpf", userDetail.getUsername())
+		return Jwts.builder().setSubject(userDetail.getUsername())
 				.setIssuedAt(new Date()).setExpiration(new Date(new Date().getTime()+jwtExpirationMs))
-				.signWith(null).compact();
+				.signWith(getSigninKey(), SignatureAlgorithm.HS256).compact();
 	}
 	
 	public Key getSigninKey() {
@@ -50,7 +51,7 @@ public class JwtUtils {
 		return false;
 	}
 	
-	public String getCpfToken(String Token) {
-		return Jwts.parser().setSigningKey(getSigninKey()).build().parseClaimsJws(Token).getBody().getSubject();
+	public String getCpfToken(String token) {
+		return Jwts.parser().setSigningKey(getSigninKey()).build().parseClaimsJws(token).getBody().getSubject();
 	}
 }

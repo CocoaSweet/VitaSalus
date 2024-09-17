@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.vitasalus.dev.dto.MedicoDTO;
 import com.vitasalus.dev.entity.MedicoEntity;
 import com.vitasalus.dev.repository.MedicoRepository;
 import com.vitasalus.dev.service.MedicoService;
@@ -38,15 +40,17 @@ public class MedicoServiceImpl implements MedicoService {
 	}
 
 	@Override
-	public MedicoEntity saveMedico(MedicoEntity medicoEntity) {
-		medicoEntity.setSenha(passwordEncoder.encode(medicoEntity.getSenha()));
-		return medicoRepository.save(medicoEntity);
+	public void saveMedico(MedicoDTO medico) {
+		MedicoEntity medicoEntity = new MedicoEntity(medico);
+		medicoEntity.setSenha(passwordEncoder.encode(medico.getSenha()));
+		medicoRepository.save(medicoEntity);
 	}
 
 	@Override
-	public MedicoEntity updateMedico(MedicoEntity medicoEntity) {
-		medicoEntity.setSenha(passwordEncoder.encode(medicoEntity.getSenha()));
-		return medicoRepository.save(medicoEntity);
+	public MedicoDTO updateMedico(MedicoDTO medico) {
+		MedicoEntity medicoEntity = new MedicoEntity(medico);
+		medicoEntity.setSenha(passwordEncoder.encode(medico.getSenha()));
+		return new MedicoDTO(medicoRepository.save(medicoEntity));
 	}
 
 	@Override

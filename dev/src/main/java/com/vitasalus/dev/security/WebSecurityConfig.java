@@ -25,7 +25,7 @@ public class WebSecurityConfig {
 	private AuthEntryPointJwt unauthorizedHandler;
 	
 	@Bean
-	public PasswordEncoder passwordEncode() {
+	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	

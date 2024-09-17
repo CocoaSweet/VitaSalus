@@ -1,6 +1,11 @@
 package com.vitasalus.dev.entity;
 
 import java.util.Date;
+
+import org.springframework.beans.BeanUtils;
+
+import com.vitasalus.dev.dto.MedicoDTO;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -43,19 +48,8 @@ public class MedicoEntity {
 	public MedicoEntity() {
 	}
 
-	public MedicoEntity(Long id, String cpf, String nome, String sobrenome, String email, String telefone, String crm,
-			String ufcrm, Date dataNascimento, String senha) {
-		super();
-		this.id = id;
-		this.cpf = cpf;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.email = email;
-		this.telefone = telefone;
-		this.crm = crm;
-		this.ufcrm = ufcrm;
-		this.dataNascimento = dataNascimento;
-		this.senha = senha;
+	public MedicoEntity(MedicoDTO medico) {
+		BeanUtils.copyProperties(medico, this);
 	}
 
 	public Long getId() {

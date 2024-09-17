@@ -32,6 +32,27 @@ public class AuthServiceImpl implements AuthService {
 
 			String token = jwtUtils.generateTokenFromUserDetailsImpl(userAuthenticate);
 			
+			AcessDTO acessDto = new AcessDTO(token);
+			
+			return acessDto;
+			
+		} catch (BadCredentialsException e) {
+			// TODO
+		}
+		return null;
+	}
+	
+	public AcessDTO loginMedico(AuthenticationDTO authDto) {
+		try {
+			UsernamePasswordAuthenticationToken userAuth = new UsernamePasswordAuthenticationToken(authDto.getCpf(),
+					authDto.getPassword());
+
+			Authentication authentication = authenticationManager.authenticate(userAuth);
+
+			UserDetailsImpl userAuthenticate = (UserDetailsImpl)authentication.getPrincipal();
+
+			String token = jwtUtils.generateTokenFromUserDetailsImpl(userAuthenticate);
+			
 			return new AcessDTO(token);
 			
 		} catch (BadCredentialsException e) {

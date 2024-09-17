@@ -38,7 +38,7 @@ public class AuthFilterToken extends OncePerRequestFilter{
 			String jwt = getToken(request);
 			if(jwt != null && jwtUtils.validateJwtToken(jwt)) {
 				String cpf = jwtUtils.getCpfToken(jwt);
-				UserDetails userDetails = userDetailsService.loadUserByUsername(jwt);
+				UserDetails userDetails = userDetailsService.loadUserByUsername(cpf);
 				UsernamePasswordAuthenticationToken auth = 
 						new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 				auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
@@ -46,7 +46,7 @@ public class AuthFilterToken extends OncePerRequestFilter{
 				SecurityContextHolder.getContext().setAuthentication(auth);
 				}
 		} catch(Exception e) {
-			System.out.println("Ocorreu um erro");
+			e.printStackTrace();
 		} finally {
 			
 		}

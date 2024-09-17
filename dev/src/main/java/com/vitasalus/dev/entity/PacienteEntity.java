@@ -1,7 +1,18 @@
 package com.vitasalus.dev.entity;
 
 import java.util.Date;
-import jakarta.persistence.*;
+
+import org.springframework.beans.BeanUtils;
+
+import com.vitasalus.dev.dto.PacienteDTO;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "pacientes", uniqueConstraints = { @UniqueConstraint(columnNames = { "cpf", "email", "telefone" }) })
@@ -36,17 +47,9 @@ public class PacienteEntity {
 	public PacienteEntity() {
 	}
 
-	public PacienteEntity(Long id, String cpf, String nome, String sobrenome, String email, String telefone,
-			Date dataNascimento, String senha) {
-		super();
-		this.id = id;
-		this.cpf = cpf;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.email = email;
-		this.telefone = telefone;
-		this.dataNascimento = dataNascimento;
-		this.senha = senha;
+
+	public PacienteEntity(PacienteDTO paciente) {
+		BeanUtils.copyProperties(paciente, this);
 	}
 
 	public Long getId() {
@@ -112,5 +115,7 @@ public class PacienteEntity {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	
 
 }
