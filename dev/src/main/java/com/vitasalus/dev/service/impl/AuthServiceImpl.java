@@ -37,7 +37,7 @@ public class AuthServiceImpl implements AuthService {
 			return acessDto;
 			
 		} catch (BadCredentialsException e) {
-			// TODO
+			System.out.println(e.toString());
 		}
 		return null;
 	}
@@ -56,8 +56,8 @@ public class AuthServiceImpl implements AuthService {
 			return new AcessDTO(token);
 			
 		} catch (BadCredentialsException e) {
-			// TODO
-		}
+			System.out.println(e.toString());		
+			}
 		return null;
 	}
 

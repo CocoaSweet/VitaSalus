@@ -20,7 +20,6 @@ public class UserDetailsImpl implements UserDetails {
 
 	public UserDetailsImpl(Long id, String name, String cpf, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
@@ -52,6 +51,26 @@ public class UserDetailsImpl implements UserDetails {
 	@Override
 	public String getUsername() {
 		return cpf;
+	}
+	
+	@Override
+	public boolean isAccountNonExpired() {
+	    return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+	    return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+	    return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+	    return true;
 	}
 
 }
