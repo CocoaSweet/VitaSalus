@@ -1,11 +1,10 @@
 package com.vitasalus.dev.dto;
 
 import java.util.Date;
-
 import org.springframework.beans.BeanUtils;
-import com.vitasalus.dev.entity.PacienteEntity;
+import com.vitasalus.dev.entity.MedicoEntity;
 
-public class PacienteDTO {
+public class RequestDoctorDTO {
 
 	private Long id;
 	private String nome;
@@ -13,16 +12,15 @@ public class PacienteDTO {
 	private String cpf;
 	private String email;
 	private String telefone;
+	private String crm;
+	private String ufcrm;
 	private Date dataNascimento;
-	private String senha;
 	
-	public PacienteDTO(PacienteEntity paciente) {
-		BeanUtils.copyProperties(paciente, this);
+	public RequestDoctorDTO(MedicoEntity medico) {
+		BeanUtils.copyProperties(medico, this);
 	}
 	
-	
-	
-	public PacienteDTO() {
+	public RequestDoctorDTO() {
 		
 	}
 
@@ -74,20 +72,28 @@ public class PacienteDTO {
 		this.telefone = telefone;
 	}
 
+	public String getCrm() {
+		return crm;
+	}
+
+	public void setCrm(String crm) {
+		this.crm = crm;
+	}
+
+	public String getUfcrm() {
+		return ufcrm;
+	}
+
+	public void setUfcrm(String ufcrm) {
+		this.ufcrm = ufcrm;
+	}
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 	
 }

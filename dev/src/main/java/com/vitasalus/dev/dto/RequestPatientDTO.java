@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.beans.BeanUtils;
 import com.vitasalus.dev.entity.PacienteEntity;
 
-public class PacienteDTO {
+public class RequestPatientDTO {
 
 	private Long id;
 	private String nome;
@@ -14,15 +14,12 @@ public class PacienteDTO {
 	private String email;
 	private String telefone;
 	private Date dataNascimento;
-	private String senha;
 	
-	public PacienteDTO(PacienteEntity paciente) {
+	public RequestPatientDTO(PacienteEntity paciente) {
 		BeanUtils.copyProperties(paciente, this);
 	}
 	
-	
-	
-	public PacienteDTO() {
+	public RequestPatientDTO() {
 		
 	}
 
@@ -82,12 +79,4 @@ public class PacienteDTO {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 }

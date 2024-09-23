@@ -2,10 +2,8 @@ package com.vitasalus.dev.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.vitasalus.dev.entity.MedicoEntity;
 import com.vitasalus.dev.entity.PacienteEntity;
 

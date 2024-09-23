@@ -13,33 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vitasalus.dev.dto.MedicoDTO;
-import com.vitasalus.dev.dto.RequestDoctorDTO;
+import com.vitasalus.dev.dto.RequestPatientDTO;
 import com.vitasalus.dev.dto.UpdateUserDTO;
-import com.vitasalus.dev.service.impl.MedicoServiceImpl;
+import com.vitasalus.dev.service.impl.PacienteServiceImpl;
 
 @RestController
-@RequestMapping("/medico")
-public class MedicoController {
+@RequestMapping("/paciente")
+public class PatientController {
 	
 	@Autowired
-	private MedicoServiceImpl medicoService;
+	private PacienteServiceImpl pacienteService;
 	
 	@GetMapping("/{id}")
-	public Optional<RequestDoctorDTO> getPatient(@PathVariable("id") Long id) {
-		return medicoService.findById(id);
+	public Optional<RequestPatientDTO> getPatient(@PathVariable("id") Long id) {
+		return pacienteService.findById(id);
 	}
 	
 	@DeleteMapping("/{cpf}")
 	public ResponseEntity<Void> deletePatient(@PathVariable("cpf") String cpf ) {
-		medicoService.deleteMedico(cpf);
+		pacienteService.deletePaciente(cpf);
 		return ResponseEntity.ok().build();
 	}
 	
 	@PutMapping("/{id}")
-    public ResponseEntity<Void> editDoctor(@PathVariable("id") Long id, @RequestBody UpdateUserDTO userDTO) {
+    public ResponseEntity<Void> editPatient(@PathVariable("id") Long id, @RequestBody UpdateUserDTO userDTO) {
         try {
-            medicoService.updateMedico(id, userDTO);
+            pacienteService.updatePaciente(id, userDTO);
             return ResponseEntity.noContent().build();
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();

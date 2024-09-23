@@ -1,12 +1,13 @@
 package com.vitasalus.dev.service.impl;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.vitasalus.dev.dto.PacienteDTO;
+import com.vitasalus.dev.dto.RequestPatientDTO;
+import com.vitasalus.dev.dto.UpdateUserDTO;
 import com.vitasalus.dev.entity.PacienteEntity;
 import com.vitasalus.dev.repository.PacienteRepository;
 import com.vitasalus.dev.service.PacienteService;
@@ -25,13 +26,15 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public Optional<PacienteEntity> findById(Long id) {
-		return pacienteRepository.findById(id);
+	public Optional<RequestPatientDTO> findById(Long id) {
+		Optional<PacienteEntity> pacienteEntity = pacienteRepository.findById(id);
+		return pacienteEntity.map(RequestPatientDTO::new); 
 	}
 
 	@Override
-	public Optional<PacienteEntity> findByCpf(String cpf) {
-		return pacienteRepository.findByCpf(cpf);
+	public Optional<RequestPatientDTO> findByCpf(String cpf) {
+		Optional<PacienteEntity> pacienteEntity = pacienteRepository.findByCpf(cpf);
+		return pacienteEntity.map(RequestPatientDTO::new);
 	}
 
 	@Override
@@ -42,20 +45,27 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public PacienteDTO updatePaciente(PacienteDTO paciente) {
-		PacienteEntity pacienteEntity = new PacienteEntity(paciente);
-		pacienteEntity.setSenha(passwordEncoder.encode(paciente.getSenha()));
-		return new PacienteDTO(pacienteRepository.save(pacienteEntity));
-	}
+	public void updatePaciente(Long id, UpdateUserDTO pacienteDTO) {
+        PacienteEntity existingPatient = pacienteRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Paciente com ID " + id + " não encontrado"));
+        
+        existingPatient.setEmail(pacienteDTO.getEmail());
+        existingPatient.setTelefone(pacienteDTO.getTelefone());
+        if (pacienteDTO.getSenha() != null && !pacienteDTO.getSenha().isEmpty()) {
+            existingPatient.setSenha(passwordEncoder.encode(pacienteDTO.getSenha()));
+        }
+        pacienteRepository.save(existingPatient);
+    }
 
 	@Override
 	public void deletePaciente(Long id) {
-		pacienteRepository.deleteById(id);
-	}
+		Optional<PacienteEntity> patient = pacienteRepository.findById(id);
+		pacienteRepository.delete(patient.get());	}
 
 	@Override
 	public void deletePaciente(String cpf) {
-		pacienteRepository.deleteByCpf(cpf);
+		Optional<PacienteEntity> patient = pacienteRepository.findByCpf(cpf);
+		pacienteRepository.delete(patient.get());
 	}
 
 }

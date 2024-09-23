@@ -1,11 +1,8 @@
 package com.vitasalus.dev.entity;
 
 import java.util.Date;
-
 import org.springframework.beans.BeanUtils;
-
 import com.vitasalus.dev.dto.PacienteDTO;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
