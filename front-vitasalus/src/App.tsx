@@ -1,14 +1,10 @@
-import { useState } from 'react'
 import './App.css'
+import AppRoutes from './AppRoutes'
 
-function App() {
+export default function App() {
 
   return (
-    <>
-      <div>
-       
-    </>
+    <AppRoutes/>
   )
 }
 
-export default App
