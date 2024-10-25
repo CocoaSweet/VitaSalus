@@ -4,6 +4,8 @@ import DefaultFormPage from "./pages/defaultFormPage";
 import InitialPage from "./pages/initialPage";
 import PatientLogin from "./pages/login/patientLogin";
 import DoctorLogin from "./pages/login/doctorLogin";
+import PatientRegister from "./pages/register/patientRegister";
+import DoctorRegister from "./pages/register/doctorRegister";
 
 export default function AppRoutes(){
     return(
@@ -15,6 +17,8 @@ export default function AppRoutes(){
             <Route path = "/" element={<DefaultFormPage/>}>
                 <Route path = "/loginPaciente" element={<PatientLogin/>}/>
                 <Route path = "/loginMedico" element={<DoctorLogin/>}/>
+                <Route path = "/cadastroPaciente" element={<PatientRegister/>}/>
+                <Route path = "/cadastroMedico" element={<DoctorRegister/>}/>
             </Route>
         </Routes>
         </BrowserRouter>
