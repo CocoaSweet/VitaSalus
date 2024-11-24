@@ -27,8 +27,8 @@ public class PatientController {
 	private PacienteServiceImpl pacienteService;
 	
 	@GetMapping("/{id}")
-	public Optional<RequestPatientDTO> getPatient(@PathVariable("id") Long id) {
-		return pacienteService.findById(id);
+	public Optional<RequestPatientDTO> getPatient(@PathVariable("cpf") String cpf) {
+		return pacienteService.findByCpf(cpf);
 	}
 	
 	@DeleteMapping("/{cpf}")

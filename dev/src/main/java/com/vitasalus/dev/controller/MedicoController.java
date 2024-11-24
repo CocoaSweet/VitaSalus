@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vitasalus.dev.dto.MedicoDTO;
 import com.vitasalus.dev.dto.RequestDoctorDTO;
 import com.vitasalus.dev.dto.UpdateUserDTO;
 import com.vitasalus.dev.service.impl.MedicoServiceImpl;
@@ -28,12 +27,12 @@ public class MedicoController {
 	private MedicoServiceImpl medicoService;
 	
 	@GetMapping("/{id}")
-	public Optional<RequestDoctorDTO> getPatient(@PathVariable("id") Long id) {
-		return medicoService.findById(id);
+	public Optional<RequestDoctorDTO> getDoctor(@PathVariable("cpf") String cpf) {
+		return medicoService.findByCpf(cpf);
 	}
 	
 	@DeleteMapping("/{cpf}")
-	public ResponseEntity<Void> deletePatient(@PathVariable("cpf") String cpf ) {
+	public ResponseEntity<Void> deleteDoctor(@PathVariable("cpf") String cpf ) {
 		medicoService.deleteMedico(cpf);
 		return ResponseEntity.ok().build();
 	}

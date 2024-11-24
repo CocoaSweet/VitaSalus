@@ -1,11 +1,11 @@
 export default interface Doctor{
-    name: string,
-    lastName: string, 
+    nome: string,
+    sobrenome: string, 
     cpf: string,
     email: string,
     crm: string,
     ufcrm: string,
-    telephone: string,
-    birthDate: string,
-    password: string;
+    telefone: string,
+    dataNascimento: string,
+    senha: string;
 }

@@ -10,8 +10,8 @@ export default function InitialPage(){
         <Container>
             <Logo/>
             <Title>VitaSalus</Title>
-            <Button href="/auth/loginPaciente" title="Paciente"/>
-            <Button href="/auth/loginMedico" title="Médico"/>
+            <Button href="/loginPaciente" title="Paciente"/>
+            <Button href="/loginMedico" title="Médico"/>
         </Container>
     </MainContainer>
     </>
