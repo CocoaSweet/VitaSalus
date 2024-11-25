@@ -95,5 +95,13 @@ public class RequestDoctorDTO {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+	@Override
+	public String toString() {
+		return "RequestDoctorDTO [nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", email=" + email
+				+ ", telefone=" + telefone + ", crm=" + crm + ", ufcrm=" + ufcrm + ", dataNascimento=" + dataNascimento
+				+ "]";
+	}
+	
 	
 }

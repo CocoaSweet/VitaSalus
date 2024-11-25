@@ -26,7 +26,7 @@ public class MedicoController {
 	@Autowired
 	private MedicoServiceImpl medicoService;
 	
-	@GetMapping("/{id}")
+	@GetMapping("/{cpf}")
 	public Optional<RequestDoctorDTO> getDoctor(@PathVariable("cpf") String cpf) {
 		return medicoService.findByCpf(cpf);
 	}

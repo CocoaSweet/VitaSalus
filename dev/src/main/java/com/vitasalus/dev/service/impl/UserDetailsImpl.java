@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
-
 import com.vitasalus.dev.entity.MedicoEntity;
 import com.vitasalus.dev.entity.PacienteEntity;
 
-@Service
 public class UserDetailsImpl implements UserDetails {
 
 	private Long id;
