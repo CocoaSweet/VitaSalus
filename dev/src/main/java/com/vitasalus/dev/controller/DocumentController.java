@@ -1,7 +1,6 @@
 package com.vitasalus.dev.controller;
 
-import java.util.List;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.vitasalus.dev.dto.*;
@@ -14,10 +13,15 @@ public class DocumentController {
 	
 	@Autowired
 	private DocumentServiceImpl documentService;
+	
+	@GetMapping("/{id}")
+	public Optional<ResponseDocumentDTO> findById(@PathVariable Long id){
+		return documentService.findById(id);
+	}
 
-	@PostMapping
-	public List<ResponseDocumentDTO> findAllByDocumentType(@RequestBody DocumentRequestDTO document){
-		return documentService.findAllByDocumentTypeAndPatient(document);
+	@GetMapping
+	public List<ResponseDocumentDTO> findAllByDocumentType(@RequestParam String documentType, @RequestParam String cpf){
+		return documentService.findAllByDocumentTypeAndPatient(documentType, cpf);
 	}
 	
 	@PostMapping("/new-doc")

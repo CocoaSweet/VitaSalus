@@ -24,11 +24,17 @@ public class DocumentServiceImpl implements DocumentService{
 	public DocumentServiceImpl(DocumentRepository documentRepository) {
 		this.documentRepository = documentRepository;
 	}
+	
+	@Override
+	public Optional<ResponseDocumentDTO> findById(Long id) {
+		Optional<DocumentEntity> document = documentRepository.findById(id);
+		return document.map(ResponseDocumentDTO::new);
+	}
 
 	@Override
-	public List<ResponseDocumentDTO> findAllByDocumentTypeAndPatient(DocumentRequestDTO document) {
-		Long patientId = patient.findByCpf(document.getCpf()).get().getId();
-		List<DocumentEntity> documentEntity = documentRepository.findAllByDocumentTypeAndPacienteId(document.getDocumentType(), patientId);
+	public List<ResponseDocumentDTO> findAllByDocumentTypeAndPatient(String documentType, String cpf) {
+		Long patientId = patient.findByCpf(cpf).get().getId();
+		List<DocumentEntity> documentEntity = documentRepository.findAllByDocumentTypeAndPacienteId(documentType, patientId);
 		return documentEntity.stream().map(ResponseDocumentDTO::new).toList();
 	}
 

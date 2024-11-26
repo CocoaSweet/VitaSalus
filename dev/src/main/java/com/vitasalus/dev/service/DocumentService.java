@@ -5,7 +5,8 @@ import com.vitasalus.dev.dto.*;
 
 public interface DocumentService {
 
-	List<ResponseDocumentDTO> findAllByDocumentTypeAndPatient(DocumentRequestDTO document);
+	public List<ResponseDocumentDTO> findAllByDocumentTypeAndPatient(String documentType, String cpf);
+	public Optional<ResponseDocumentDTO> findById(Long id);
 	void saveDocument(DocumentDTO document);
 	void deleteDocument(Long id);
 
