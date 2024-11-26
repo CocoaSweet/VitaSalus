@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MedicoDTO {
+public class ResponseDoctorDTO {
 
 	private Long id;
 	private String nome;
@@ -19,10 +19,17 @@ public class MedicoDTO {
 	private String crm;
 	private String ufcrm;
 	private LocalDate dataNascimento;
-	private String senha;
 	
-	public MedicoDTO(MedicoEntity medico) {
+	public ResponseDoctorDTO(MedicoEntity medico) {
 		BeanUtils.copyProperties(medico, this);
 	}
-
+	
+	@Override
+	public String toString() {
+		return "ResponseDoctorDTO [nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", email=" + email
+				+ ", telefone=" + telefone + ", crm=" + crm + ", ufcrm=" + ufcrm + ", dataNascimento=" + dataNascimento
+				+ "]";
+	}
+	
+	
 }

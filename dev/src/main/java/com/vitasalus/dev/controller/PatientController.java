@@ -1,21 +1,10 @@
 package com.vitasalus.dev.controller;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.vitasalus.dev.dto.RequestPatientDTO;
-import com.vitasalus.dev.dto.UpdateUserDTO;
+import org.springframework.web.bind.annotation.*;
+import com.vitasalus.dev.dto.*;
 import com.vitasalus.dev.service.impl.PacienteServiceImpl;
 
 @RestController
@@ -27,7 +16,7 @@ public class PatientController {
 	private PacienteServiceImpl pacienteService;
 	
 	@GetMapping("/{cpf}")
-	public Optional<RequestPatientDTO> getPatient(@PathVariable("cpf") String cpf) {
+	public Optional<ResponsePatientDTO> getPatient(@PathVariable("cpf") String cpf) {
 		return pacienteService.findByCpf(cpf);
 	}
 	

@@ -5,9 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.vitasalus.dev.dto.PacienteDTO;
-import com.vitasalus.dev.dto.RequestPatientDTO;
-import com.vitasalus.dev.dto.UpdateUserDTO;
+import com.vitasalus.dev.dto.*;
 import com.vitasalus.dev.entity.PacienteEntity;
 import com.vitasalus.dev.repository.PacienteRepository;
 import com.vitasalus.dev.service.PacienteService;
@@ -26,15 +24,15 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public Optional<RequestPatientDTO> findById(Long id) {
+	public Optional<ResponsePatientDTO> findById(Long id) {
 		Optional<PacienteEntity> pacienteEntity = pacienteRepository.findById(id);
-		return pacienteEntity.map(RequestPatientDTO::new); 
+		return pacienteEntity.map(ResponsePatientDTO::new); 
 	}
 
 	@Override
-	public Optional<RequestPatientDTO> findByCpf(String cpf) {
+	public Optional<ResponsePatientDTO> findByCpf(String cpf) {
 		Optional<PacienteEntity> pacienteEntity = pacienteRepository.findByCpf(cpf);
-		return pacienteEntity.map(RequestPatientDTO::new);
+		return pacienteEntity.map(ResponsePatientDTO::new);
 	}
 
 	@Override

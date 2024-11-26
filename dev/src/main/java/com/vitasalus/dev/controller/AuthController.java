@@ -2,14 +2,8 @@ package com.vitasalus.dev.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.vitasalus.dev.dto.AuthenticationDTO;
-import com.vitasalus.dev.dto.MedicoDTO;
-import com.vitasalus.dev.dto.PacienteDTO;
+import org.springframework.web.bind.annotation.*;
+import com.vitasalus.dev.dto.*;
 import com.vitasalus.dev.service.AuthService;
 import com.vitasalus.dev.service.impl.MedicoServiceImpl;
 import com.vitasalus.dev.service.impl.PacienteServiceImpl;

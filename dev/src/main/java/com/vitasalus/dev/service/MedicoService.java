@@ -1,15 +1,13 @@
 package com.vitasalus.dev.service;
 
 import java.util.Optional;
-import com.vitasalus.dev.dto.MedicoDTO;
-import com.vitasalus.dev.dto.RequestDoctorDTO;
-import com.vitasalus.dev.dto.UpdateUserDTO;
+import com.vitasalus.dev.dto.*;
 
 public interface MedicoService {
 	
-	Optional<RequestDoctorDTO> findById(Long id);
-	Optional<RequestDoctorDTO> findByCpf(String cpf);
-	Optional<RequestDoctorDTO> findByCrmAndUfcrm(String crm, String ufcrm);
+	Optional<ResponseDoctorDTO> findById(Long id);
+	Optional<ResponseDoctorDTO> findByCpf(String cpf);
+	Optional<ResponseDoctorDTO> findByCrmAndUfcrm(String crm, String ufcrm);
 	MedicoDTO editDoctor(MedicoDTO doctor);
 	void saveMedico(MedicoDTO medicoEntity);
 	void updateMedico(Long id, UpdateUserDTO pacienteDTO);

@@ -1,7 +1,6 @@
 package com.vitasalus.dev.service;
 
-import com.vitasalus.dev.dto.AcessDTO;
-import com.vitasalus.dev.dto.AuthenticationDTO;
+import com.vitasalus.dev.dto.*;
 
 public interface AuthService {
 	

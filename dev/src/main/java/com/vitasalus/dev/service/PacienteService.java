@@ -1,14 +1,12 @@
 package com.vitasalus.dev.service;
 
 import java.util.Optional;
-import com.vitasalus.dev.dto.PacienteDTO;
-import com.vitasalus.dev.dto.RequestPatientDTO;
-import com.vitasalus.dev.dto.UpdateUserDTO;
+import com.vitasalus.dev.dto.*;
 
 public interface PacienteService {
 
-	Optional<RequestPatientDTO> findById(Long id);
-	Optional<RequestPatientDTO> findByCpf(String cpf);
+	Optional<ResponsePatientDTO> findById(Long id);
+	Optional<ResponsePatientDTO> findByCpf(String cpf);
 	void savePaciente(PacienteDTO pacienteEntity);
 	void deletePaciente(Long id);
 	void deletePaciente(String cpf);

@@ -1,14 +1,15 @@
 package com.vitasalus.dev.entity;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import org.springframework.beans.BeanUtils;
-
 import com.vitasalus.dev.dto.MedicoDTO;
-
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "medicos", uniqueConstraints={@UniqueConstraint(columnNames={"cpf", "email", "telefone"})})
 public class MedicoEntity {
 
@@ -39,7 +40,7 @@ public class MedicoEntity {
 	private String ufcrm;
 	
 	@Column(name = "dt_nascimento")
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	
 	@Column(name = "senha")
 	private String senha;
@@ -52,69 +53,4 @@ public class MedicoEntity {
 		BeanUtils.copyProperties(medico, this);
 	}
 
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-	public String getCrm() {
-		return crm;
-	}
-	public void setCrm(String crm) {
-		this.crm = crm;
-	}
-	public String getUfcrm() {
-		return ufcrm;
-	}
-	public void setUfcrm(String ufcrm) {
-		this.ufcrm = ufcrm;
-	}
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-	public String getSobrenome() {
-		return sobrenome;
-	}
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-	
-	
-	
-	
 }

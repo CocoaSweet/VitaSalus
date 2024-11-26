@@ -5,11 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.vitasalus.dev.dto.MedicoDTO;
-import com.vitasalus.dev.dto.RequestDoctorDTO;
-import com.vitasalus.dev.dto.UpdateUserDTO;
+import com.vitasalus.dev.dto.*;
 import com.vitasalus.dev.entity.MedicoEntity;
-import com.vitasalus.dev.entity.PacienteEntity;
 import com.vitasalus.dev.repository.MedicoRepository;
 import com.vitasalus.dev.service.MedicoService;
 
@@ -27,20 +24,20 @@ public class MedicoServiceImpl implements MedicoService {
 	}
 	
 	@Override
-	public Optional<RequestDoctorDTO> findById(Long id) {
+	public Optional<ResponseDoctorDTO> findById(Long id) {
 		Optional<MedicoEntity> medicoEntity = medicoRepository.findById(id);
-		return medicoEntity.map(RequestDoctorDTO::new); 	
+		return medicoEntity.map(ResponseDoctorDTO::new); 	
 		}
 
 	@Override
-	public Optional<RequestDoctorDTO> findByCpf(String cpf) {
+	public Optional<ResponseDoctorDTO> findByCpf(String cpf) {
 		Optional<MedicoEntity> medicoEntity = medicoRepository.findByCpf(cpf);
-		return medicoEntity.map(RequestDoctorDTO::new); 		}
+		return medicoEntity.map(ResponseDoctorDTO::new); 		}
 
 	@Override
-	public Optional<RequestDoctorDTO> findByCrmAndUfcrm(String crm, String ufcrm) {
+	public Optional<ResponseDoctorDTO> findByCrmAndUfcrm(String crm, String ufcrm) {
 		Optional<MedicoEntity> medicoEntity = medicoRepository.findByCrmAndUfcrm(crm, ufcrm);
-		return medicoEntity.map(RequestDoctorDTO::new); 		}
+		return medicoEntity.map(ResponseDoctorDTO::new); 		}
 
 	@Override
 	public void saveMedico(MedicoDTO medico) {

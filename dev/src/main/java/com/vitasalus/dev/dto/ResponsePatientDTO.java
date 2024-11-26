@@ -1,13 +1,13 @@
 package com.vitasalus.dev.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 import org.springframework.beans.BeanUtils;
 import com.vitasalus.dev.entity.PacienteEntity;
 import lombok.*;
 
 @Getter
 @Setter
-public class PacienteDTO {
+public class ResponsePatientDTO {
 
 	private Long id;
 	private String nome;
@@ -15,18 +15,14 @@ public class PacienteDTO {
 	private String cpf;
 	private String email;
 	private String telefone;
-	private Date dataNascimento;
-	private String senha;
+	private LocalDate dataNascimento;
 	
-	public PacienteDTO(PacienteEntity paciente) {
+	public ResponsePatientDTO(PacienteEntity paciente) {
 		BeanUtils.copyProperties(paciente, this);
 	}
 	
-	
-	public PacienteDTO() {
+	public ResponsePatientDTO() {
 		
 	}
 
-
-	
 }
