@@ -79,9 +79,9 @@ export default function DoctorRegister() {
 
                         <Input type="text" value={name} placeholder="Seu nome" label="Nome" onChange={setName} />
                         <Input type="text" value={lastName} placeholder="Seu sobrenome" label="Sobrenome" onChange={setLastName} />
-                        <Input type="text" value={birthDate} placeholder="dd/mm/yyyy" label="Data de nascimento" onChange={setBirthDate} />
-                        <Input type="text" value={cpf} placeholder="Seu CPF" label="CPF" onChange={setCpf} />
-                        <>
+                        <Input type="date" value={birthDate} placeholder="dd/mm/yyyy" label="Data de nascimento" onChange={setBirthDate} />
+                        <Input type="text" value={cpf} placeholder="Seu CPF" label="CPF" onChange={setCpf} maxlength={11}
+                minlength={11}/>                        <>
                             <Input type="text" value={crm} placeholder="Seu CRM" label="CRM" onChange={setCrm} />
                             <Input type="text" value={ufcrm} placeholder="UFCRM" label="UFCRM" onChange={setUfcrm} />
                         </>

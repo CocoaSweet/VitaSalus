@@ -7,8 +7,9 @@ interface Props {
     endpoint: string;
 }
 const fetchData = async (endpoint : string) => {
-    const response = await axios.get(`${API_URL}${endpoint}`)
-    return response.data
+    var token = localStorage.getItem('token')
+    const response = await axios.get(`${API_URL}${endpoint}`, {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}})
+    return response
 }
 
 export default function useFetchData({ endpoint }: Props) {

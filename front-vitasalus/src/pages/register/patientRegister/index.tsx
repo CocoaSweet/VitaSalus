@@ -69,8 +69,9 @@ export default function PatientRegister() {
                     <Form onSubmit={handleSubmit}>
                         <Input type="text" value={name} placeholder="Seu nome" label="Nome" onChange={setName} />
                         <Input type="text" value={lastName} placeholder="Seu sobrenome" label="Sobrenome" onChange={setLastName} />
-                        <Input type="text" value={birthDate} placeholder="dd/mm/yyyy" label="Data de nascimento" onChange={setBirthDate} />
-                        <Input type="text" value={cpf} placeholder="Seu CPF" label="CPF" onChange={setCpf} />
+                        <Input type="date" value={birthDate} placeholder="dd/mm/yyyy" label="Data de nascimento" onChange={setBirthDate} />
+                        <Input type="text" value={cpf} placeholder="Seu CPF" label="CPF" onChange={setCpf} maxlength={11}
+                minlength={11}/>
                         <Input type="password" value={password} placeholder="Digite sua senha" label="Senha" onChange={setPassword} />
                         <Input type="password" value={passwordVerifier} placeholder="Confirme sua senha" label="Confirmar a senha" onChange={setPasswordVerifier} />
                         <FormButton type="submit">Avançar</FormButton>

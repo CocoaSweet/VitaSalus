@@ -5,6 +5,8 @@ interface Props {
     value: string,
     placeholder: string,
     label?: string,
+    maxlength?: number,
+    minlength?: number,
     onChange: (value: string) => void;
 }
 
@@ -31,7 +33,7 @@ font-size 16px;
 line-heigth: 19px;
 `
 
-export default function Input({ type, value, placeholder, label, onChange }: Props) {
+export default function Input({ type, value, placeholder, label, onChange, maxlength, minlength }: Props) {
     return (
         <Container>
             <Label>{label}</Label>
@@ -40,6 +42,8 @@ export default function Input({ type, value, placeholder, label, onChange }: Pro
                 value={value}
                 placeholder={placeholder}
                 onChange={(e) => onChange(e.target.value)}
+                maxLength={maxlength}
+                minLength={minlength}
                 required />
         </Container>
 

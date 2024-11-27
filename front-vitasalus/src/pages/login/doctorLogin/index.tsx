@@ -7,6 +7,7 @@ import { Form, FormButton } from "../../../components/form/styledComponents"
 import Login from "../../../types/User"
 import UsePost from "../../../usePost"
 import { useNavigate } from "react-router-dom"
+import authStore from "../../../store/auth.store"
 
 export default function DoctorLogin(){
     const [cpf, setCpf] = useState('')
@@ -27,7 +28,8 @@ export default function DoctorLogin(){
                 endpoint: 'auth/login-medico',
                 data: userLogin
             })
-            navigate('/dashboard')
+            authStore.login({cpf: cpf})
+            navigate('/homeMedico')
 
         } catch {[isSuccess] && alert('Erro ao fazer login')}
     }

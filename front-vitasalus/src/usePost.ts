@@ -4,10 +4,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 const API_URL = 'http://localhost:8080/'
 
 const postData = async (endpoint: string, data: any, header: any): Promise<any> => {
-    const response = await axios.post(`${API_URL}${endpoint}`, data, {headers: header || {'Content-Type': 'application/json'}})
-
-    const token = response.data.token
-
+    var token = localStorage.getItem('token')
+    if(token){
+        await axios.post(`${API_URL}${endpoint}`, data, {headers: header || {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}})
+    } else {
+            const response = await axios.post(`${API_URL}${endpoint}`, data, {headers: header || {'Content-Type': 'application/json'}})
+            token = response.data.token
+    }
     return token
 }
 

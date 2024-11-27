@@ -8,7 +8,7 @@ export const Form = styled.form`
   align-items: center;
 
   ::-webkit-scrollbar {
-    width: 8px; /* Largura da barra de rolagem */
+    width: 8px;
   }
 `
 
@@ -17,7 +17,7 @@ background-color: #25AB48;
 border-radius: 8px;
 padding: 12px 16px;
 width: 20%;
-color: var(--branco);
+color: white;
 border: none;
 margin: 10px;
 font-weight: 700;

@@ -1,5 +1,3 @@
 export default interface UserAuth{
-
-    cpf: string,
-    token: string;
+    cpf: string
 }

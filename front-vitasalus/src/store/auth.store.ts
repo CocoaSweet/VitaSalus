@@ -3,7 +3,7 @@ import UserAuth from "../types/UserAuth";
 
 class AuthStore {
     isAuthenticated = false
-    user: UserAuth = {cpf: "", token: ""}
+    user: UserAuth = {cpf: ""}
 
     constructor(){
         makeObservable(this, {
@@ -14,16 +14,20 @@ class AuthStore {
         })
     }
 
-    login({cpf, token}: UserAuth){
+    login({cpf}: UserAuth){
         this.isAuthenticated = true
-        this.user = {cpf, token}
+        this.user = {cpf}
+        sessionStorage.setItem('cpf', cpf)
     }
 
     logout(){
         this.isAuthenticated = false
-        this.user = {cpf: "", token: ""}
+        this.user = {cpf: ""}
+        sessionStorage.clear()
+        localStorage.clear()
     }
 
 }
 
-export const authStore = new AuthStore()
+const authStore = new AuthStore()
+export default authStore

@@ -5,7 +5,7 @@ background-color: #25AB48;
 border-radius: 8px;
 padding: 12px 16px;
 width: 20%;
-color: var(--branco);
+color: white;
 border: none;
 margin: 10px;
 font-weight: 700;
@@ -18,7 +18,6 @@ color: Ivory;
 interface Props{
     href?: string,
     title: string;
-
 }
 
 export default function Button({title, href, }: Props){
