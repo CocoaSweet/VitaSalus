@@ -1,6 +1,6 @@
 package com.vitasalus.dev.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 import org.springframework.beans.BeanUtils;
 import com.vitasalus.dev.entity.PacienteEntity;
 import lombok.*;
@@ -15,7 +15,7 @@ public class PacienteDTO {
 	private String cpf;
 	private String email;
 	private String telefone;
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	private String senha;
 	
 	public PacienteDTO(PacienteEntity paciente) {
